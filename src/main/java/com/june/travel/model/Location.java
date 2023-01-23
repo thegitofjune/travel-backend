@@ -2,10 +2,12 @@ package com.june.travel.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -18,9 +20,13 @@ public class Location {
 
 	private String name;
 
-	public Location(String name) {
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private Review reviews;
+
+	public Location(String name, Review reviews) {
 		super();
 		this.name = name;
+		this.reviews = reviews;
 	}
 
 	public Location() {
@@ -43,9 +49,17 @@ public class Location {
 		this.name = name;
 	}
 
+	public Review getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(Review reviews) {
+		this.reviews = reviews;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(locationId, name);
+		return Objects.hash(locationId, name, reviews);
 	}
 
 	@Override
@@ -57,12 +71,13 @@ public class Location {
 		if (getClass() != obj.getClass())
 			return false;
 		Location other = (Location) obj;
-		return locationId == other.locationId && Objects.equals(name, other.name);
+		return locationId == other.locationId && Objects.equals(name, other.name)
+				&& Objects.equals(reviews, other.reviews);
 	}
 
 	@Override
 	public String toString() {
-		return "Location [locationId=" + locationId + ", name=" + name + "]";
+		return "Location [locationId=" + locationId + ", name=" + name + ", reviews=" + reviews + "]";
 	}
 
 }
