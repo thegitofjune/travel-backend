@@ -10,17 +10,15 @@ import com.june.travel.repository.LocationDao;
 public class LocationService {
 
 	private LocationDao locationDao;
-	
+
 	@Autowired
 	public LocationService(LocationDao locationDao) {
 		super();
 		this.locationDao = locationDao;
 	}
-	
-	public Location createLocation(Location location) {
-		return locationDao.save(location);
-	}
 
-	
+	public void createLocation(Location location) {
+		locationDao.save(location);
+	}
 
 }
