@@ -1,5 +1,6 @@
 package com.june.travel;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -60,8 +61,13 @@ public class LocationTests {
 		Review reviewMexico = new Review("very warm, Mayan culture, great food");
 		Attraction attractionMexico = new Attraction("Mayan sites", 5);
 		Location locationMexico = new Location("Mexico", reviewMexico, attractionMexico);
-		System.out.println(locationMexico);
 		locationService.createLocation(locationMexico);
+	}
+	
+	@Test
+	void test_thatALocationCanBeRetrievedUsingId() {
+		Location retrievedLocation = locationService.retrieveById(1).get();
+		assertEquals(1, retrievedLocation.getLocationId());
 	}
 
 }

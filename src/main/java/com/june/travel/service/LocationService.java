@@ -1,5 +1,7 @@
 package com.june.travel.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,10 @@ public class LocationService {
 
 	public void createLocation(Location location) {
 		locationDao.save(location);
+	}
+
+	public Optional<Location> retrieveById(int locationId) {
+		return locationDao.findById(locationId);
 	}
 
 }
