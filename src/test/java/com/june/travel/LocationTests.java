@@ -21,9 +21,7 @@ public class LocationTests {
 	private LocationService locationService;
 	
 
-	@Autowired
-	private ReviewService reviewService;
-
+	
 
 	
 	@Test
