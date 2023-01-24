@@ -1,7 +1,10 @@
 package com.june.travel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -68,6 +71,12 @@ public class LocationTests {
 	void test_thatALocationCanBeRetrievedUsingId() {
 		Location retrievedLocation = locationService.retrieveById(1).get();
 		assertEquals(1, retrievedLocation.getLocationId());
+	}
+	
+	@Test
+	void test_thatAListOfLocationsCanBeRetrieved() {
+		List<Location> locations = locationService.retreiveAll();
+		assertFalse(locations.isEmpty());
 	}
 
 }
