@@ -54,5 +54,14 @@ public class LocationTests {
 		locationService.createLocation(location);
 		assertNotEquals(0, location.getLocationId());
 	}
+	
+	@Test
+	void test_thatALocationCanBeCreatedUsingRealValues() {
+		Review reviewMexico = new Review("very warm, Mayan culture, great food");
+		Attraction attractionMexico = new Attraction("Mayan sites", 5);
+		Location locationMexico = new Location("Mexico", reviewMexico, attractionMexico);
+		System.out.println(locationMexico);
+		locationService.createLocation(locationMexico);
+	}
 
 }
