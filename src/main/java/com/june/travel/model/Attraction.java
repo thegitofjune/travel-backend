@@ -2,10 +2,12 @@ package com.june.travel.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -19,6 +21,9 @@ public class Attraction {
 	private String name;
 
 	private int rating;
+
+	@OneToOne(cascade = CascadeType.PERSIST)
+	private Review review;
 
 	public Attraction(String name, int rating) {
 		super();
@@ -54,9 +59,17 @@ public class Attraction {
 		this.rating = rating;
 	}
 
+	public Review getReview() {
+		return review;
+	}
+
+	public void setReview(Review review) {
+		this.review = review;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(attractionId, name, rating);
+		return Objects.hash(attractionId, name, rating, review);
 	}
 
 	@Override
@@ -68,12 +81,14 @@ public class Attraction {
 		if (getClass() != obj.getClass())
 			return false;
 		Attraction other = (Attraction) obj;
-		return attractionId == other.attractionId && Objects.equals(name, other.name) && rating == other.rating;
+		return attractionId == other.attractionId && Objects.equals(name, other.name) && rating == other.rating
+				&& Objects.equals(review, other.review);
 	}
 
 	@Override
 	public String toString() {
-		return "AAtrtaction [attractionId=" + attractionId + ", name=" + name + ", rating=" + rating + "]";
+		return "Attraction [attractionId=" + attractionId + ", name=" + name + ", rating=" + rating + ", review="
+				+ review + "]";
 	}
 
 }
