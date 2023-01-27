@@ -22,13 +22,13 @@ public class Attraction {
 
 	private int rating;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
-	private Review review;
+	private String review;
 
-	public Attraction(String name, int rating) {
+	public Attraction(String name, int rating, String review) {
 		super();
 		this.name = name;
 		this.rating = rating;
+		this.review = review;
 	}
 
 	public Attraction() {
@@ -59,11 +59,11 @@ public class Attraction {
 		this.rating = rating;
 	}
 
-	public Review getReview() {
+	public String getReview() {
 		return review;
 	}
 
-	public void setReview(Review review) {
+	public void setReview(String review) {
 		this.review = review;
 	}
 

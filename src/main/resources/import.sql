@@ -1,41 +1,33 @@
-insert into Review (reviewId, reviewBody) values (nextval('review_seq'), 'Mexico is a warm country and Mexicans are a warm people, the food is spicy and the Mayan sites are to die for')
-insert into attraction (attractionId, name, rating) values (nextval('attraction_seq'), 'Palenque', 5);
-insert into location (locationId, name, attractions_attractionId, reviews_reviewId ) values (nextval('location_seq'), 'Mexico', 1,1);
+insert into attraction (attractionId, name, rating, review ) values (nextval('attraction_seq'), 'Palenque', 5, 'review of palenque');
+insert into location (locationId, name, attractions_attractionId, review ) values (nextval('location_seq'), 'Mexico', 1, 'Mexico is a warmn country and Mexicans are a warm people.  The food is spicy and the Mayan trial will amaze you');
 
 
-insert into Review (reviewId, reviewBody) values (nextval('review_seq'), 'Belize is really chill and great for snorkelling')
 insert into attraction (attractionId, name, rating) values (nextval('attraction_seq'), 'Belize', 5);
-insert into location (locationId, name, attractions_attractionId, reviews_reviewId ) values (nextval('location_seq'), 'Belize', 2,2);
+insert into location (locationId, name, attractions_attractionId, review ) values (nextval('location_seq'), 'Belize', 2, 'a review for  Belize');
 
 
-insert into Review (reviewId, reviewBody) values (nextval('review_seq'), 'Guatemala has great Mayan sites and an amazing food culture')
 insert into attraction (attractionId, name, rating) values (nextval('attraction_seq'), 'Guatemala', 5);
-insert into location (locationId, name, attractions_attractionId, reviews_reviewId ) values (nextval('location_seq'), 'Guatemala', 3,3);
+insert into location (locationId, name, attractions_attractionId, review ) values (nextval('location_seq'), 'Guatemala', 3, 'a review for Guatemala');
 
 
 
-insert into Review (reviewId, reviewBody) values (nextval('review_seq'), 'Argentina offers tango and friendliness in abundance, vegans may struggle')
 insert into attraction (attractionId, name, rating) values (nextval('attraction_seq'), 'Argentina', 5);
-insert into location (locationId, name, attractions_attractionId, reviews_reviewId ) values (nextval('location_seq'), 'Argentina', 4,4);
+insert into location (locationId, name, attractions_attractionId, review ) values (nextval('location_seq'), 'Argentina', 4, ' a review for Argentina');
 
 
 
-insert into Review (reviewId, reviewBody) values (nextval('review_seq'), 'Guatemala has great Mayan sites and an amazing food culture')
 insert into attraction (attractionId, name, rating) values (nextval('attraction_seq'), 'Guatemala', 5);
-insert into location (locationId, name, attractions_attractionId, reviews_reviewId ) values (nextval('location_seq'), 'Guatemala', 5,5);
+insert into location (locationId, name, attractions_attractionId, review ) values (nextval('location_seq'), 'Guatemala', 5, 'another reivew for Guatemala');
 
 
 
-insert into Review (reviewId, reviewBody) values (nextval('review_seq'), 'Uruguay is small but packs in a lot')
 insert into attraction (attractionId, name, rating) values (nextval('attraction_seq'), 'Uruguay', 5);
-insert into location (locationId, name, attractions_attractionId, reviews_reviewId ) values (nextval('location_seq'), 'Uruguay', 6,6);
+insert into location (locationId, name, attractions_attractionId, review ) values (nextval('location_seq'), 'Uruguay', 6, 'A review for Uruguay');
 
 
-insert into Review (reviewId, reviewBody) values (nextval('review_seq'), 'Chile has a long sprawling coastline and amazing cities too')
 insert into attraction (attractionId, name, rating) values (nextval('attraction_seq'), 'Chile', 5);
-insert into location (locationId, name, attractions_attractionId, reviews_reviewId ) values (nextval('location_seq'), 'Guatemala', 7,7);
+insert into location (locationId, name, attractions_attractionId, review ) values (nextval('location_seq'), 'Guatemala', 7, 'a revoew for Chile');
 
 
-insert into Review (reviewId, reviewBody) values (nextval('review_seq'), 'Easter Island takes some getting too, but you will love the Rapa Nui')
 insert into attraction (attractionId, name, rating) values (nextval('attraction_seq'), 'Easter Island', 5);
-insert into location (locationId, name, attractions_attractionId, reviews_reviewId ) values (nextval('location_seq'), 'Easter Island', 8,8);
+insert into location (locationId, name, attractions_attractionId, review ) values (nextval('location_seq'), 'Easter Island', 8, ' a review for Easter Island');

@@ -15,7 +15,6 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 import com.june.travel.model.Attraction;
 import com.june.travel.model.Location;
-import com.june.travel.model.Review;
 import com.june.travel.service.LocationService;
 
 @SpringBootTest
@@ -27,14 +26,11 @@ public class LocationTests {
 
 	private Location location;
 
-	private Review review;
-
 	private Attraction attraction;
 
 	@BeforeEach
 	void setup() {
 		location = new Location();
-		review = new Review();
 		attraction = new Attraction();
 	}
 
@@ -44,50 +40,33 @@ public class LocationTests {
 		assertNotEquals(0, location.getLocationId());
 	}
 
+
 	@Test
-	void test_thatALocationCanBeCreatedWithAReview() {
-		location.setReviews(review);
+	void test_thatAnLocationCanBeSaved_withAnAttractionß() {
+		location.setAttractions(attraction);
 		locationService.createLocation(location);
 		assertNotEquals(0, location.getLocationId());
 	}
 
 	@Test
-	void test_thatAnLocationCanBeSaved_withAnAttractionAndAReview() {
-		location.setAttractions(attraction);
-		location.setReviews(review);
-		locationService.createLocation(location);
-		assertNotEquals(0, location.getLocationId());
-	}
-	
-	@Test
 	void test_thatALocationCanBeCreatedUsingRealValues() {
-		Review reviewMexico = new Review("very warm, Mayan culture, great food");
-		Attraction attractionMexico = new Attraction("Mayan sites", 5);
-		Location locationMexico = new Location("Mexico", reviewMexico, attractionMexico);
+		Attraction attractionMexico = new Attraction("Mayan sites", 5, "A review for Mayan sites");
+		Location locationMexico = new Location("Mexico",
+				"Mexico is a warm country and Mexicans are a warm people, the food is spicy and the Mayan trial is out of this world",
+				attractionMexico);
 		locationService.createLocation(locationMexico);
 	}
-	
+
 	@Test
 	void test_thatALocationCanBeRetrievedUsingId() {
 		Location retrievedLocation = locationService.retrieveById(1).get();
 		assertEquals(1, retrievedLocation.getLocationId());
 	}
-	
+
 	@Test
 	void test_thatAListOfLocationsCanBeRetrieved() {
 		List<Location> locations = locationService.retreiveAll();
 		assertFalse(locations.isEmpty());
-	}
-	
-	@Test
-	void test_ThatOnlyOneReviewCanBeAddedForALocation() {
-		Review review2 = new Review();
-		location.setReviews(review);
-		location.setReviews(review2);
-		locationService.createLocation(location);
-		System.out.println(location);
-		assertNotEquals(1, location.getReviews());
-		
 	}
 
 }

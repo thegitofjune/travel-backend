@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.june.travel.model.Attraction;
-import com.june.travel.model.Review;
 import com.june.travel.service.AttractionService;
 
 @SpringBootTest
@@ -23,11 +22,5 @@ public class AttractionTests {
 		assertNotEquals(0, attraction.getAttractionId());
 	}
 	
-	@Test
-	void test_thatAReviewCanBeSavedWithAnAttraction() {
-		Attraction attraction = new Attraction();
-		Review review = new Review();
-		attraction.setReview(review);
-		attractionService.create(attraction);
-	}
+	
 }

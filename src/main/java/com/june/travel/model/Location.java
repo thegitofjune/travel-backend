@@ -21,16 +21,15 @@ public class Location {
 
 	private String name;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
-	private Review reviews;
+	private String review;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Attraction attractions;
 
-	public Location(String name, Review reviews, Attraction attractions) {
+	public Location(String name, String review, Attraction attractions) {
 		super();
 		this.name = name;
-		this.reviews = reviews;
+		this.review = review;
 		this.attractions = attractions;
 	}
 
@@ -54,12 +53,12 @@ public class Location {
 		this.name = name;
 	}
 
-	public Review getReviews() {
-		return reviews;
+	public String getReview() {
+		return review;
 	}
 
-	public void setReviews(Review reviews) {
-		this.reviews = reviews;
+	public void setReview(String review) {
+		this.review = review;
 	}
 
 	public Attraction getAttractions() {
@@ -72,7 +71,7 @@ public class Location {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(attractions, locationId, name, reviews);
+		return Objects.hash(attractions, locationId, name, review);
 	}
 
 	@Override
@@ -85,12 +84,12 @@ public class Location {
 			return false;
 		Location other = (Location) obj;
 		return Objects.equals(attractions, other.attractions) && locationId == other.locationId
-				&& Objects.equals(name, other.name) && Objects.equals(reviews, other.reviews);
+				&& Objects.equals(name, other.name) && Objects.equals(review, other.review);
 	}
 
 	@Override
 	public String toString() {
-		return "Location [locationId=" + locationId + ", name=" + name + ", reviews=" + reviews + ", attractions="
+		return "Location [locationId=" + locationId + ", name=" + name + ", review=" + review + ", attractions="
 				+ attractions + "]";
 	}
 
