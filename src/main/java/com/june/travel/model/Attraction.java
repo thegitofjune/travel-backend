@@ -2,12 +2,12 @@ package com.june.travel.model;
 
 import java.util.Objects;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -23,6 +23,10 @@ public class Attraction {
 	private int rating;
 
 	private String review;
+	
+	@ManyToOne
+    @JoinColumn(name = "locationId")
+    private Location location;
 
 	public Attraction(String name, int rating, String review) {
 		super();

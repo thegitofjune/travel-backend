@@ -74,5 +74,7 @@ public class LocationTests {
 		List<Location> locations = locationService.retreiveAll();
 		assertFalse(locations.isEmpty());
 	}
+	
+	
 
 }

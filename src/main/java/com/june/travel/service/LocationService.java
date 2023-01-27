@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.june.travel.model.Attraction;
 import com.june.travel.model.Location;
 import com.june.travel.repository.LocationDao;
 
@@ -31,5 +32,7 @@ public class LocationService {
 	public List<Location> retreiveAll() {
 		return locationDao.findAll();
 	}
+
+
 
 }

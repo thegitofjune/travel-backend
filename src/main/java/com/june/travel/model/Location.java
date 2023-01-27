@@ -24,7 +24,7 @@ public class Location {
 
 	private String review;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "location")
 	private List<Attraction> attractions;
 
 	public Location(String name, String review, List<Attraction> attractions) {

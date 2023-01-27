@@ -40,6 +40,14 @@ public class AttractionTests {
 		attractions = mexico.getAttractions();
 		System.err.println(attractions);
 		assertFalse(attractions.isEmpty());
-		
 	}
+	
+	@Test
+	void test_thatAListOfAttractionsCanBeRetrievedForALocation() {
+		Location retrievedLocation = locationService.retrieveById(1).get();
+		List<Attraction> attractionsForThisLocation = attractionService.findByLocation(retrievedLocation);
+		assertFalse(attractionsForThisLocation.isEmpty());
+	}
+	
+	
 }

@@ -1,9 +1,12 @@
 package com.june.travel.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.june.travel.model.Attraction;
+import com.june.travel.model.Location;
 import com.june.travel.repository.AtrtactionDao;
 
 @Service
@@ -19,6 +22,10 @@ public class AttractionService {
 
 	public void create(Attraction attraction) {
 		attractionDao.save(attraction);
+	}
+
+	public List<Attraction> findByLocation(Location location) {
+		return attractionDao.findByLocation(location);
 	}
 
 
