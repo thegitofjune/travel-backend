@@ -21,4 +21,5 @@ public class AttractionService {
 		attractionDao.save(attraction);
 	}
 
+
 }

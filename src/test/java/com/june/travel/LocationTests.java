@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -26,12 +27,17 @@ public class LocationTests {
 
 	private Location location;
 
-	private Attraction attraction;
+	private List<Attraction> attractions;
+
+	private Attraction attraction1;
+	private Attraction attraction2;
 
 	@BeforeEach
 	void setup() {
+		attractions = new ArrayList<>();
 		location = new Location();
-		attraction = new Attraction();
+		attraction1 = new Attraction();
+		attraction2 = new Attraction();
 	}
 
 	@Test
@@ -40,10 +46,10 @@ public class LocationTests {
 		assertNotEquals(0, location.getLocationId());
 	}
 
-
 	@Test
-	void test_thatAnLocationCanBeSaved_withAnAttractionß() {
-		location.setAttractions(attraction);
+	void test_thatAnLocationCanBeSaved_withATwottractions() {
+		attractions.add(attraction1);
+		attractions.add(attraction2);
 		locationService.createLocation(location);
 		assertNotEquals(0, location.getLocationId());
 	}
@@ -51,9 +57,9 @@ public class LocationTests {
 	@Test
 	void test_thatALocationCanBeCreatedUsingRealValues() {
 		Attraction attractionMexico = new Attraction("Mayan sites", 5, "A review for Mayan sites");
+		attractions.add(attractionMexico);
 		Location locationMexico = new Location("Mexico",
-				"Mexico is a warm country and Mexicans are a warm people, the food is spicy and the Mayan trial is out of this world",
-				attractionMexico);
+				"Mexico is a warm country and Mexicans are a warm people, the food is spicy and the Mayan trial is out of this world", null);
 		locationService.createLocation(locationMexico);
 	}
 

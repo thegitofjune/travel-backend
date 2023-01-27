@@ -1,14 +1,15 @@
 package com.june.travel.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -23,10 +24,10 @@ public class Location {
 
 	private String review;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	private Attraction attractions;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	private List<Attraction> attractions;
 
-	public Location(String name, String review, Attraction attractions) {
+	public Location(String name, String review, List<Attraction> attractions) {
 		super();
 		this.name = name;
 		this.review = review;
@@ -61,11 +62,11 @@ public class Location {
 		this.review = review;
 	}
 
-	public Attraction getAttractions() {
+	public List<Attraction> getAttractions() {
 		return attractions;
 	}
 
-	public void setAttractions(Attraction attractions) {
+	public void setAttractions(List<Attraction> attractions) {
 		this.attractions = attractions;
 	}
 
