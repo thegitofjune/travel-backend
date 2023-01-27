@@ -78,5 +78,16 @@ public class LocationTests {
 		List<Location> locations = locationService.retreiveAll();
 		assertFalse(locations.isEmpty());
 	}
+	
+	@Test
+	void test_ThatOnlyOneReviewCanBeAddedForALocation() {
+		Review review2 = new Review();
+		location.setReviews(review);
+		location.setReviews(review2);
+		locationService.createLocation(location);
+		System.out.println(location);
+		assertNotEquals(1, location.getReviews());
+		
+	}
 
 }

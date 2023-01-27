@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.june.travel.model.Location;
+import com.june.travel.model.Review;
 import com.june.travel.service.LocationService;
+import com.june.travel.service.ReviewService;
 
 @RestController
 @RequestMapping("/api/v1/locations/")
@@ -18,7 +20,10 @@ import com.june.travel.service.LocationService;
 public class LocationController {
 
 	@Autowired
-	LocationService locationService;
+	private LocationService locationService;
+	
+	@Autowired
+	private ReviewService reviewService;
 
 	@GetMapping
 	public List<Location> allLocations() {
@@ -29,6 +34,6 @@ public class LocationController {
 	public Location findById(@PathVariable int locationId) {
 		return locationService.retrieveById(locationId).get();
 	}
-
+	
 	
 }
