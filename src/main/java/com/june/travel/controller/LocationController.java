@@ -22,8 +22,6 @@ public class LocationController {
 	@Autowired
 	private LocationService locationService;
 	
-	@Autowired
-	private ReviewService reviewService;
 
 	@GetMapping
 	public List<Location> allLocations() {

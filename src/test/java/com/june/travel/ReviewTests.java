@@ -35,4 +35,11 @@ public class ReviewTests {
 		Review reviewFromLocation = retrievedLocation.getReviews();
 		assertEquals(1, reviewFromLocation.getReviewId());
 	}
+	
+	@Test
+	void test_thatAReviewCanBeRetrievedUsingTheReviewService() {
+		Review retrievedReview = reviewService.retrieveById(1).get();
+		assertEquals(1, retrievedReview.getReviewId());
+
+	}
 }
