@@ -46,6 +46,7 @@ public class AttractionTests {
 	void test_thatAListOfAttractionsCanBeRetrievedForALocation() {
 		Location retrievedLocation = locationService.retrieveById(1).get();
 		List<Attraction> attractionsForThisLocation = attractionService.findByLocation(retrievedLocation);
+		System.err.println(attractionsForThisLocation);
 		assertFalse(attractionsForThisLocation.isEmpty());
 	}
 	
