@@ -28,9 +28,5 @@ public class AttractionService {
 		return attractionDao.findByLocation(location);
 	}
 
-	public List<Attraction> getAttractionsByLocationId(int locationId) {
-		return attractionDao.findyByLocationId(locationId);
-	}
-
 
 }
