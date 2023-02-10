@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.metamodel.mapping.internal.NoValueGeneration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,8 @@ public class LocationTests {
 		Attraction attractionMexico = new Attraction("Mayan sites", 5, "A review for Mayan sites");
 		attractions.add(attractionMexico);
 		Location locationMexico = new Location("Mexico",
-				"Mexico is a warm country and Mexicans are a warm people, the food is spicy and the Mayan trial is out of this world", null);
+				"Mexico is a warm country and Mexicans are a warm people, the food is spicy and the Mayan trial is out of this world",
+				null);
 		locationService.createLocation(locationMexico);
 	}
 
@@ -74,7 +76,26 @@ public class LocationTests {
 		List<Location> locations = locationService.retreiveAll();
 		assertFalse(locations.isEmpty());
 	}
-	
-	
 
+	@Test
+	void test_ThatALocationCanBeUpdated() {
+		Location locationToUpdate = locationService.retrieveById(1).get();
+		String nameBeforeUpdate = locationToUpdate.getName();
+		locationToUpdate.setName("Updated name");
+		locationService.updateLocation(locationToUpdate);
+		Location updatedLocation = locationService.retrieveById(1).get();
+		String nameAfterUpdate = updatedLocation.getName();
+		System.err.println(updatedLocation);
+		assertNotEquals(nameAfterUpdate, nameBeforeUpdate);
+	}
+
+	@Test
+	void test_ThatALocationThatDoesNotExistWillNotBeCreatedByUpdateAttempt() {
+		Location locationToUpdate = locationService.retrieveById(1).get();
+		int numberBeforeUpdate = locationService.retreiveAll().size();
+		locationService.updateLocation(locationToUpdate);
+		int numberAfterUpdate = locationService.retreiveAll().size();
+		assertEquals(numberAfterUpdate, numberBeforeUpdate);
+		
+	}
 }

@@ -33,6 +33,12 @@ public class LocationService {
 		return locationDao.findAll();
 	}
 
-
+	public void updateLocation(Location location) {
+		if (retrieveById(location.getLocationId()).isPresent()) {
+			locationDao.save(location);
+		} else {
+			System.err.println("this location doesn't exist");
+		}
+	}
 
 }

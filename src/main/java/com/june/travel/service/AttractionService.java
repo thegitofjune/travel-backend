@@ -20,6 +20,11 @@ public class AttractionService {
 		this.attractionDao = attractionDao;
 	}
 
+	public void create(Attraction attraction, Location location) {
+		attraction.setLocation(location);
+		attractionDao.save(attraction);
+	}
+	
 	public void create(Attraction attraction) {
 		attractionDao.save(attraction);
 	}

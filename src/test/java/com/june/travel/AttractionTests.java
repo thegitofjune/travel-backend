@@ -1,5 +1,6 @@
 package com.june.travel;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -38,7 +39,6 @@ public class AttractionTests {
 		Location mexico = locationService.retrieveById(1).get();
 		List<Attraction> attractions = new ArrayList<>();
 		attractions = mexico.getAttractions();
-		System.err.println(attractions);
 		assertFalse(attractions.isEmpty());
 	}
 	
@@ -50,5 +50,18 @@ public class AttractionTests {
 		assertFalse(attractionsForThisLocation.isEmpty());
 	}
 	
+	@Test
+	void test_ThatAnAttractionCanBeAddedToAnExistingLocation() {
+		Attraction attraction = new Attraction("another place in mexico", 5, "this is a review");
+		Location locationToAddAttractionTo = locationService.retrieveById(1).get();
+		List<Attraction> listOfAttractions = locationToAddAttractionTo.getAttractions();
+		listOfAttractions.add(attraction);
+		assertEquals(3, listOfAttractions.size());
+	}
+	
+	@Test
+	void test_thatAnAttractionCanBeSavedWithALocation() {
+		
+	}
 	
 }

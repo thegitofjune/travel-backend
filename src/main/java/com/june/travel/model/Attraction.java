@@ -2,6 +2,9 @@ package com.june.travel.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,10 +26,11 @@ public class Attraction {
 	private int rating;
 
 	private String review;
-	
-	@ManyToOne
-    @JoinColumn(name = "locationId")
-    private Location location;
+
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "locationId")
+	private Location location;
 
 	public Attraction(String name, int rating, String review) {
 		super();
@@ -71,9 +75,17 @@ public class Attraction {
 		this.review = review;
 	}
 
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(attractionId, name, rating, review);
+		return Objects.hash(attractionId, location, name, rating, review);
 	}
 
 	@Override
@@ -85,14 +97,10 @@ public class Attraction {
 		if (getClass() != obj.getClass())
 			return false;
 		Attraction other = (Attraction) obj;
-		return attractionId == other.attractionId && Objects.equals(name, other.name) && rating == other.rating
-				&& Objects.equals(review, other.review);
+		return attractionId == other.attractionId && Objects.equals(location, other.location)
+				&& Objects.equals(name, other.name) && rating == other.rating && Objects.equals(review, other.review);
 	}
 
-	@Override
-	public String toString() {
-		return "Attraction [attractionId=" + attractionId + ", name=" + name + ", rating=" + rating + ", review="
-				+ review + "]";
-	}
+
 
 }

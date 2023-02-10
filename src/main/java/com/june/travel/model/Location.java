@@ -88,10 +88,5 @@ public class Location {
 				&& Objects.equals(name, other.name) && Objects.equals(review, other.review);
 	}
 
-	@Override
-	public String toString() {
-		return "Location [locationId=" + locationId + ", name=" + name + ", review=" + review + ", attractions="
-				+ attractions + "]";
-	}
-
+	
 }

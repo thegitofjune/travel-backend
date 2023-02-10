@@ -38,10 +38,9 @@ public class LocationController {
 	@PostMapping("/addLocation")
 	public ResponseEntity<Location> addLocation(@RequestBody Location location) {
 		locationService.createLocation(location);
-		URI place = ServletUriComponentsBuilder.fromCurrentRequest().path("/{locationId}")
+		URI uriLocation = ServletUriComponentsBuilder.fromCurrentRequest().path("/{locationId}")
 				.buildAndExpand(location.getLocationId()).toUri();
-		return ResponseEntity.created(place).body(location);
-
+		return ResponseEntity.created(uriLocation).body(location);
 	}
 
 }
