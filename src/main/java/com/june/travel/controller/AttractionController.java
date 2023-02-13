@@ -49,4 +49,5 @@ public class AttractionController {
 		return ResponseEntity.created(uriLocation).body(attraction);
 	}
 
+	
 }

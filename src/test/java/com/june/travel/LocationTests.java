@@ -80,9 +80,10 @@ public class LocationTests {
 	@Test
 	void test_ThatALocationCanBeUpdated() {
 		Location locationToUpdate = locationService.retrieveById(1).get();
+		int locationId = locationToUpdate.getLocationId();
 		String nameBeforeUpdate = locationToUpdate.getName();
 		locationToUpdate.setName("Updated name");
-		locationService.updateLocation(locationToUpdate);
+		locationService.updateLocation(locationToUpdate, locationId);
 		Location updatedLocation = locationService.retrieveById(1).get();
 		String nameAfterUpdate = updatedLocation.getName();
 		System.err.println(updatedLocation);
@@ -92,8 +93,9 @@ public class LocationTests {
 	@Test
 	void test_ThatALocationThatDoesNotExistWillNotBeCreatedByUpdateAttempt() {
 		Location locationToUpdate = locationService.retrieveById(1).get();
+		int locationId = locationToUpdate.getLocationId();
 		int numberBeforeUpdate = locationService.retreiveAll().size();
-		locationService.updateLocation(locationToUpdate);
+		locationService.updateLocation(locationToUpdate, locationId);
 		int numberAfterUpdate = locationService.retreiveAll().size();
 		assertEquals(numberAfterUpdate, numberBeforeUpdate);
 		
