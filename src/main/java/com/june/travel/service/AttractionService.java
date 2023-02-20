@@ -34,4 +34,14 @@ public class AttractionService {
 	}
 
 
+	public Attraction findById(int attractionId) {
+		return attractionDao.findById(attractionId).get();
+	}
+
+	public Attraction updateAttraction(Attraction attraction, int attractionId) {
+		if (!attractionDao.existsById(attractionId)) {
+			System.err.println("no such attraction exists");
+		}
+		return attractionDao.save(attraction);
+	}
 }

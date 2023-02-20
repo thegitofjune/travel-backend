@@ -14,7 +14,7 @@
 	<name>travel</name>
 	<description>a site dedicated to my travel memories</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>18</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

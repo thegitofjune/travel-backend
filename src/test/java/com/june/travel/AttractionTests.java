@@ -63,5 +63,16 @@ public class AttractionTests {
 	void test_thatAnAttractionCanBeSavedWithALocation() {
 		
 	}
-	
+
+	@Test
+	void test_ThatAnAttractionCanBeUpdated() {
+		Attraction attractionToUpdate = attractionService.findById(1);
+		int attractionId = attractionToUpdate.getAttractionId();
+		String nameBeforeUpdate = attractionToUpdate.getName();
+		attractionToUpdate.setName("this attraction has been updated");
+		attractionService.updateAttraction(attractionToUpdate, attractionId);
+		Attraction updatedAttraction = attractionService.findById(1);
+		String nameAfterUpdate = updatedAttraction.getName();
+		assertNotEquals(nameBeforeUpdate, nameAfterUpdate);
+	}
 }
