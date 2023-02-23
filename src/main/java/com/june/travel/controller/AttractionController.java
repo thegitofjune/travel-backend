@@ -6,13 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.june.travel.model.Attraction;
@@ -47,6 +41,14 @@ public class AttractionController {
 		URI uriLocation = ServletUriComponentsBuilder.fromCurrentRequest().path("/{attractionId}")
 				.buildAndExpand(attraction.getAttractionId()).toUri();
 		return ResponseEntity.created(uriLocation).body(attraction);
+	}
+
+	@PutMapping("/{attractionId}")
+	public ResponseEntity<Attraction> updateAttraction(@PathVariable int attractionId, @RequestBody Attraction attraction) {
+	//Location location = attraction.getLocation();
+	//attraction.setLocation(location);
+		System.err.println("in the controller "  +attraction );
+		return ResponseEntity.ok(attractionService.updateAttraction(attraction, attractionId));
 	}
 
 	

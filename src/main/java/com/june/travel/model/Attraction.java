@@ -27,8 +27,8 @@ public class Attraction {
 
 	private String review;
 
-	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.PERSIST)
+
+	@ManyToOne(cascade = CascadeType.MERGE )
 	@JoinColumn(name = "locationId")
 	private Location location;
 
@@ -101,6 +101,14 @@ public class Attraction {
 				&& Objects.equals(name, other.name) && rating == other.rating && Objects.equals(review, other.review);
 	}
 
-
-
+	@Override
+	public String toString() {
+		return "Attraction{" +
+				"attractionId=" + attractionId +
+				", name='" + name + '\'' +
+				", rating=" + rating +
+				", review='" + review + '\'' +
+				", location=" + location +
+				'}';
+	}
 }

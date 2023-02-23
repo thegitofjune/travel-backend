@@ -3,6 +3,7 @@ package com.june.travel.model;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,6 +25,7 @@ public class Location {
 
 	private String review;
 
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "location")
 	private List<Attraction> attractions;
 
@@ -88,5 +90,15 @@ public class Location {
 				&& Objects.equals(name, other.name) && Objects.equals(review, other.review);
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Location{" +
+				"locationId=" + locationId +
+				", name='" + name + '\'' +
+				", review='" + review + '\'' +
+
+
+
+				'}';
+	}
 }

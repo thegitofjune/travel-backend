@@ -45,9 +45,8 @@ public class LocationController {
 	}
 	
 	@PutMapping("/{locationId}")
-	public ResponseEntity<Location> updateBook(@PathVariable int locationId, @RequestBody Location location) {
+	public ResponseEntity<Location> updateLocation(@PathVariable int locationId, @RequestBody Location location) {
 		return ResponseEntity.ok(locationService.updateLocation(location, locationId));
-			
 	}
 	
 

@@ -42,6 +42,9 @@ public class AttractionService {
 		if (!attractionDao.existsById(attractionId)) {
 			System.err.println("no such attraction exists");
 		}
+		Location location = attraction.getLocation();
+		attraction.setLocation(location);
+		 System.err.println(attraction);
 		return attractionDao.save(attraction);
 	}
 }
