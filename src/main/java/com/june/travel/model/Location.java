@@ -25,15 +25,18 @@ public class Location {
 
 	private String review;
 
+	private int rating;
+
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "location")
 	private List<Attraction> attractions;
 
-	public Location(String name, String review, List<Attraction> attractions) {
+	public Location(String name, String review, List<Attraction> attractions, int rating) {
 		super();
 		this.name = name;
 		this.review = review;
 		this.attractions = attractions;
+		this.rating = rating;
 	}
 
 	public Location() {
@@ -68,37 +71,28 @@ public class Location {
 		return attractions;
 	}
 
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
 	public void setAttractions(List<Attraction> attractions) {
 		this.attractions = attractions;
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Location location = (Location) o;
+		return locationId == location.locationId && rating == location.rating && Objects.equals(name, location.name) && Objects.equals(review, location.review) && Objects.equals(attractions, location.attractions);
+	}
+
+	@Override
 	public int hashCode() {
-		return Objects.hash(attractions, locationId, name, review);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Location other = (Location) obj;
-		return Objects.equals(attractions, other.attractions) && locationId == other.locationId
-				&& Objects.equals(name, other.name) && Objects.equals(review, other.review);
-	}
-
-	@Override
-	public String toString() {
-		return "Location{" +
-				"locationId=" + locationId +
-				", name='" + name + '\'' +
-				", review='" + review + '\'' +
-
-
-
-				'}';
+		return Objects.hash(locationId, name, review, rating, attractions);
 	}
 }

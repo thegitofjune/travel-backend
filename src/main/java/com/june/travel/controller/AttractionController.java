@@ -43,13 +43,15 @@ public class AttractionController {
 		return ResponseEntity.created(uriLocation).body(attraction);
 	}
 
-	@PutMapping("/{attractionId}")
-	public ResponseEntity<Attraction> updateAttraction(@PathVariable int attractionId, @RequestBody Attraction attraction) {
-	//Location location = attraction.getLocation();
-	//attraction.setLocation(location);
+	@PutMapping("/{locaationId}/{attractionId}")
+	public ResponseEntity<Attraction> updateAttraction(@PathVariable int attractionId,  @RequestBody Attraction attraction) {
 		System.err.println("in the controller "  +attraction );
 		return ResponseEntity.ok(attractionService.updateAttraction(attraction, attractionId));
 	}
 
-	
+	@GetMapping("/attraction/{attractionId}")
+	public Attraction findAttractionById(@PathVariable int attractionId) {
+		return attractionService.retrieveById(attractionId).get();
+	}
+
 }

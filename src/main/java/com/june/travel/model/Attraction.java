@@ -28,7 +28,9 @@ public class Attraction {
 	private String review;
 
 
-	@ManyToOne(cascade = CascadeType.MERGE )
+
+
+	@ManyToOne(cascade = CascadeType.PERSIST )
 	@JoinColumn(name = "locationId")
 	private Location location;
 

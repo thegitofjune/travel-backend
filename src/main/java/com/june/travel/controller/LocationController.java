@@ -31,11 +31,6 @@ public class LocationController {
 		return locationService.retreiveAll();
 	}
 
-	@GetMapping("/{locationId}")
-	public Location findById(@PathVariable int locationId) {
-		return locationService.retrieveById(locationId).get();
-	}
-
 	@PostMapping("/addLocation")
 	public ResponseEntity<Location> addLocation(@RequestBody Location location) {
 		locationService.createLocation(location);
@@ -43,12 +38,17 @@ public class LocationController {
 				.buildAndExpand(location.getLocationId()).toUri();
 		return ResponseEntity.created(uriLocation).body(location);
 	}
-	
+
+	@GetMapping("/{locationId}")
+	public Location findById(@PathVariable int locationId) {
+		return locationService.retrieveById(locationId).get();
+	}
+
 	@PutMapping("/{locationId}")
 	public ResponseEntity<Location> updateLocation(@PathVariable int locationId, @RequestBody Location location) {
 		return ResponseEntity.ok(locationService.updateLocation(location, locationId));
 	}
-	
+
 
 
 }

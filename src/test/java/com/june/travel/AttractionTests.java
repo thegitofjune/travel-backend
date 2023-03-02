@@ -60,8 +60,9 @@ public class AttractionTests {
 	}
 	
 	@Test
-	void test_thatAnAttractionCanBeSavedWithALocation() {
-		
+	void test_thatASingleLocationCanBeRetrievedWithTheId() {
+		Attraction attractionFromDb = attractionService.retrieveById(1).get();
+		assertNotEquals(0, attractionFromDb.getAttractionId());
 	}
 
 	@Test

@@ -61,7 +61,7 @@ public class LocationTests {
 		attractions.add(attractionMexico);
 		Location locationMexico = new Location("Mexico",
 				"Mexico is a warm country and Mexicans are a warm people, the food is spicy and the Mayan trial is out of this world",
-				null);
+				null, 5);
 		locationService.createLocation(locationMexico);
 	}
 
@@ -98,6 +98,7 @@ public class LocationTests {
 		locationService.updateLocation(locationToUpdate, locationId);
 		int numberAfterUpdate = locationService.retreiveAll().size();
 		assertEquals(numberAfterUpdate, numberBeforeUpdate);
-		
 	}
+
+
 }
