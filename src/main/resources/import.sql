@@ -3,8 +3,8 @@ insert into attraction (attractionId, locationId, name, rating, review ) values 
 insert into attraction (attractionId, locationId, name, rating, review ) values (nextval('attraction_seq'), 1, 'Playa del Carmen', 3, 'Playa del Carmen');
 
 insert into location (locationId, name, review, rating, region ) values (nextval('location_seq'), 'Belize',  'Belize has some amazing sport for snorkelling and diving, the seafood is amazing too', 5, 'AMERICAS');
-insert into attraction (attractionId, locationId, name, rating, review, region ) values (nextval('attraction_seq'), 2, 'Caye Caulker', 5, 'review of caye caulker');
-insert into attraction (attractionId, locationId, name, rating, review, region ) values (nextval('attraction_seq'), 2, 'Belize City', 2, 'Only passed through on the way to the islands, looked a bit run down and seedy');
+insert into attraction (attractionId, locationId, name, rating, review ) values (nextval('attraction_seq'), 2, 'Caye Caulker', 5, 'review of caye caulker');
+insert into attraction (attractionId, locationId, name, rating, review ) values (nextval('attraction_seq'), 2, 'Belize City', 2, 'Only passed through on the way to the islands, looked a bit run down and seedy');
 
 insert into location (locationId, name, review, rating, region ) values (nextval('location_seq'), 'Guatemala',  'Great for the Inka trail and some beautiful nature', 5), 'AMERICAS';
 insert into location (locationId, name, review, rating, region ) values (nextval('location_seq'), 'Argentina',  'Such a huge country and I only got to see a little, the people are great and you can learn to tango. Bit heavy on the meat diet though', 5, 'AMERICAS');

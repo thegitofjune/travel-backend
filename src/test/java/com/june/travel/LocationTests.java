@@ -1,9 +1,5 @@
 package com.june.travel;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +15,8 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import com.june.travel.model.Attraction;
 import com.june.travel.model.Location;
 import com.june.travel.service.LocationService;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
@@ -106,6 +104,16 @@ public class LocationTests {
 		Location locationWithRegion = new Location("Hong Kong", "A great place", 5 , null, Region.APAC);
 		locationService.createLocation(locationWithRegion);
 		assertEquals("Asia Pacific", locationWithRegion.getRegion().getName());
+	}
+
+	@Test
+	void test_thatAListOfLocationsCanBeFoundForARegion() {
+		List<Location> allLocations = locationService.retreiveAll();
+		int sizeAllLocations = allLocations.size();
+		List<Location> locationsInApac = locationService.findByRegion(Region.APAC);
+		int sizeAPACLocations = locationsInApac.size();
+		System.err.println(locationsInApac);
+		assertNotEquals(sizeAllLocations, sizeAPACLocations);
 	}
 
 }

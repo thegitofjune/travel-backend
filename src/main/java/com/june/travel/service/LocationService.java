@@ -3,6 +3,7 @@ package com.june.travel.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.june.travel.model.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,4 +41,7 @@ public class LocationService {
 		return locationDao.save(location);
 	}
 
+    public List<Location> findByRegion(Region region) {
+		return  locationDao.findByRegion(region);
+    }
 }
