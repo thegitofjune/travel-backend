@@ -4,14 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
 
 @Entity
 public class Location {
@@ -31,12 +24,23 @@ public class Location {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "location")
 	private List<Attraction> attractions;
 
+	@Enumerated(EnumType.STRING)
+	Region region;
+
 	public Location(String name, String review, List<Attraction> attractions, int rating) {
 		super();
 		this.name = name;
 		this.review = review;
 		this.attractions = attractions;
 		this.rating = rating;
+	}
+
+	public Location(String name, String review, int rating, List<Attraction> attractions, Region region) {
+		this.name = name;
+		this.review = review;
+		this.rating = rating;
+		this.attractions = attractions;
+		this.region = region;
 	}
 
 	public Location() {
@@ -69,6 +73,14 @@ public class Location {
 
 	public List<Attraction> getAttractions() {
 		return attractions;
+	}
+
+	public Region getRegion() {
+		return region;
+	}
+
+	public void setRegion(Region region) {
+		this.region = region;
 	}
 
 	public int getRating() {

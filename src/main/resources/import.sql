@@ -1,4 +1,4 @@
-insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'Mexico',  'Mexico is a warmn country and Mexicans are a warm people.  The food is spicy and the Mayan trial will amaze you', 5);
+insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'Mexico',  'Mexico is a warm country and Mexicans are a warm people.  The food is spicy and the Mayan trial will amaze you', 5);
 insert into attraction (attractionId, locationId, name, rating, review ) values (nextval('attraction_seq'), 1, 'Palenque', 5, 'review of palenque');
 insert into attraction (attractionId, locationId, name, rating, review ) values (nextval('attraction_seq'), 1, 'Playa del Carmen', 3, 'Playa del Carmen');
 
@@ -15,6 +15,6 @@ insert into location (locationId, name, review, rating ) values (nextval('locati
 insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'French Polynesia',  'Stunning nature, great snorkelling, eye watering prices', 5);
 insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'Australia',  'Friendly people, lively cities and learning to scuba dive on the great barrier reef made this really special', 5);
 insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'New Zealand',  'Went here during the rugby world cup, lots of places fully booked but loved what I did see, nice people', 5);
-insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'Hong Kong',  'Belize has some amazing sport for snorkelling and diving, the seafood is amazing too', 5);
-insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'Thailand',  'Belize has some amazing sport for snorkelling and diving, the seafood is amazing too', 5);
-insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'Cambodia',  'Belize has some amazing sport for snorkelling and diving, the seafood is amazing too', 5);
+insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'Hong Kong',  'Although in the heart of Asia, east meets west in Hong Kong, this is one of my favourite places', 5);
+insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'Thailand',  'Good food, nice beaches, great snorkelling and diving.  Smile everywhere and moore temples than you can imagine', 5);
+insert into location (locationId, name, review, rating ) values (nextval('location_seq'), 'Cambodia',  'Some truly unspoilt beaches, great food and Angkor Wat, of course', 5);

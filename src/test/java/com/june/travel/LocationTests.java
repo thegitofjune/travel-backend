@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.june.travel.model.Region;
 import org.hibernate.metamodel.mapping.internal.NoValueGeneration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -100,5 +101,11 @@ public class LocationTests {
 		assertEquals(numberAfterUpdate, numberBeforeUpdate);
 	}
 
+	@Test
+	void test_thatARegionCanBeAddedToALocation() {
+		Location locationWithRegion = new Location("Hong Kong", "A great place", 5 , null, Region.APAC);
+		locationService.createLocation(locationWithRegion);
+		assertEquals("Asia Pacific", locationWithRegion.getRegion().getName());
+	}
 
 }
