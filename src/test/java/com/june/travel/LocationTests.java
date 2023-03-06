@@ -1,6 +1,7 @@
 package com.june.travel;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 import com.june.travel.model.Region;
@@ -114,6 +115,12 @@ public class LocationTests {
 		int sizeAPACLocations = locationsInApac.size();
 		System.err.println(locationsInApac);
 		assertNotEquals(sizeAllLocations, sizeAPACLocations);
+	}
+
+	@Test
+	void test_thatAListOfRegionsCanBeRetrieved() {
+		List<Region> regions = EnumSet.allOf(Region.class).stream().toList();
+		assertEquals(4, regions.size());
 	}
 
 }

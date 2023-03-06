@@ -1,8 +1,10 @@
 package com.june.travel.controller;
 
 import java.net.URI;
+import java.util.EnumSet;
 import java.util.List;
 
+import com.june.travel.model.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -49,6 +51,10 @@ public class LocationController {
 		return ResponseEntity.ok(locationService.updateLocation(location, locationId));
 	}
 
+	@GetMapping("/regions")
+	public List<Region> getRegions() {
+		return  locationService.getRegions();
+	}
 
 
 }

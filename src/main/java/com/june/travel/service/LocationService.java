@@ -1,5 +1,6 @@
 package com.june.travel.service;
 
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,4 +45,9 @@ public class LocationService {
     public List<Location> findByRegion(Region region) {
 		return  locationDao.findByRegion(region);
     }
+
+	public List<Region> getRegions() {
+		return  EnumSet.allOf(Region.class).stream().toList().;
+	}
+
 }
