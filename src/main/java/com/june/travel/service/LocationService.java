@@ -47,7 +47,7 @@ public class LocationService {
     }
 
 	public List<Region> getRegions() {
-		return  EnumSet.allOf(Region.class).stream().toList().;
+		return  EnumSet.allOf(Region.class).stream().toList();
 	}
 
 }

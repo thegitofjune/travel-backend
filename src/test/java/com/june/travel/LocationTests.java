@@ -123,4 +123,10 @@ public class LocationTests {
 		assertEquals(4, regions.size());
 	}
 
+	@Test
+	void test_ThatAListOfDestinationsCanBeRetrievedForALocation() {
+		List<Location> locationsInAPAC = locationService.findByRegion(Region.APAC);
+		assertEquals(6, locationsInAPAC.size());
+	}
+
 }

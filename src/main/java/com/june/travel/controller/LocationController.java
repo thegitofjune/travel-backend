@@ -57,4 +57,9 @@ public class LocationController {
 	}
 
 
+	@GetMapping("/getByRegion/{region}")
+	public List<Location> getlocationByRegion(@PathVariable  Region region) {
+		return  locationService.findByRegion(region);
+	}
+
 }
